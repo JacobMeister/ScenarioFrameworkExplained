@@ -132,10 +132,10 @@ it should look something like this:
 If it's working you can try to add enemies guarding the vehicle to the mission. Use a SlotAI.et to add them.
 
 <details> 
-  <summary>A more detailed guide to adding enemies is in here, but I know you can figure it out by now! Try it first.</summary>
-   <details> 
-    <summary>Are you sure you want to see the guide?</summary>
-    This is not much different then the ammobox we spawned near the car. First drag a SlotAI.et into the world near the destroy slot. Set an enemy group as the object to spawn, for instance Group_USSR_SentryTeam.et. If you drag the slot into the DestroyLayer in the hierarchy window, it will be activated along with the vehicle and the ammobox. That's it! Isn't it easy? :)
+  <summary>A more detailed guide to adding enemies is in <b>here</b>, but I know you can figure it out by now! Try it first.</summary>
+   <details>
+      <summary>Are you sure you want to see the <b>guide</b>?</summary>
+      This is not much different then the ammobox we spawned near the car. First drag a SlotAI.et into the world near the destroy slot. Set an enemy group as the object to spawn, for instance Group_USSR_SentryTeam.et. If you drag the slot into the DestroyLayer in the hierarchy window, it will be activated along with the vehicle and the ammobox. That's it! Isn't it easy? :)
     </details>
 </details>
 
