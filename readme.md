@@ -30,7 +30,7 @@ There's already a lot of [guides](https://community.bistudio.com/wiki/Arma_Refor
 When these Support Entities are added they enable you to use those specific tasks in the scenario.
 
 ## Scenario Framework Hierarchy
-For the scenario framework to do it's thing the hierarchy of the different entities is very important.
+For the scenario framework to do its thing the hierarchy of the different entities is very important.
 
 ### Area (Area.et)
 This is at the top of the hierarchy. This is where the framework starts generating. As seen in the Combat Ops - Arland scenario these are mostly divided by the different locations on the map. As far as I know it doesn't matter how many areas you have, as long as you have one the framework will work. The area will have Layers under it in the hierarchy as children. 
@@ -38,14 +38,14 @@ This is at the top of the hierarchy. This is where the framework starts generati
 #### Object properties 
 Let's look at the object properties of the area for a second. If you select the area in the hierarchy window, the object properties window will be filled. The `GenericEntity` and `Hierarchy` objects are not really important to us. The `SCR_ScenarioFrameworkArea` object is. If you open that you will be met with the properties of that object. There is 1 really important property that is of interest to us. 
 
-That is the `Children` property. This property enables you to control what children (layers) of the area will be activated. There are several different options. Most relevant are `ALL` (enable all children) and `RANDOM ONE` (enable one child). If you want to make your scenario more random and replayable, this is the simplest way to do so. When you start adding layers, every layer can also have this setting to make even more randomness.
+That is the `Children` property. This property enables you to control what children (layers) of the area will be activated. There are several different options. Most relevant are `ALL` (enable all children) and `RANDOM ONE` (enable one random child). If you want to make your scenario more random and replayable, this is the simplest way to do so. When you start adding layers, every layer can also have this setting to make even more randomness.
 
 ### Layer (Layer.et)
-This is one of the most powerful entities that you will use, because it will provide you with a way to lay out the scenario precisely how you want it. Later on in this guide you will see how this can be used to your advantage. When you create a layer you *have* to drag it into an area to create the child hierarchy. Any layer that does not have an area as a parent will not be activated. It is smart to rename your layer to something more recognisable than `Layer_1` to keep track of different layers in your project. This can be done by selecting it in the hierarchy, right clicking and selecting `rename`, by pressing F2 when selected, or by renaming the object in the top right of the Object Properties window.
+This is one of the most powerful entities that you will use, because it will provide you with a way to lay out the scenario precisely how you want it. Later on in this guide you will see how this can be used to your advantage. When you create a layer you *have* to drag it into an `area` to make the layer a child of the area in the hierarchy. Any layer that does not have an area as a parent will **not** be activated. It is smart to rename your layer to something more recognizable than `Layer_1` to keep track of different layers in your project. This can be done by selecting it in the hierarchy, right clicking and selecting `rename`, by pressing F2 when selected, or by renaming the object in the top right of the Object Properties window.
 
 #### Object properties
-When you open the object properties of the `SCR_ScenarioFrameworkLayerBase`, you will see some properties that are relevant to creating scenarios. The `Children` property can be used in the same way as on the area entities. The `Activation` property is also very important. 
-This is defaulted to `SAME_AS_PARENT`. This means it will be activated at the same time the parent is activated. The default behaviour of this parent, an area, is `ON_INIT`. That means it will be activated as soon as the game starts. The most relevant options in the drop-down are `SAME_AS_PARENT` and `ON_TRIGGER_ACTIVATION`. The latter can be used to activate a layer later in the game, for instance when another task is completed, or a player enters a specific location on the map. This can be used to make the scenario react to player actions during play.
+When you open the object properties of the `SCR_ScenarioFrameworkLayerBase`, you will see some properties that are relevant to creating scenarios. The `Children` property can be used in the same way as on the area entities. The `Activation` property is also very important.
+This is defaulted to `SAME_AS_PARENT`. This means it will be activated at the same time the parent is activated. The default behaviour of the current parent, an area, is `ON_INIT`. That means the area will be activated as soon as the game starts. After the area is activated, this layer will consequently also be activated. The most relevant options in the drop-down are `SAME_AS_PARENT` and `ON_TRIGGER_ACTIVATION`. `ON_TRIGGER_ACTIVATION`can be used to activate a layer later in the game, for instance when another task is completed, or a player enters a specific location on the map. This can be used to make the scenario react to player actions during play.
 
 ### Slot
 This is at the bottom of the Scenario Framework Hierarchy. When created they have to be dragged into the layer to be recognized by the framework. Slots are mainly used to spawn objects, either in a task setting (vehicle to destroy) or just to create any entity on the fly (vehicle, AI group (using the SlotAI.et prefab), buildings). Combined with the layer on trigger activation this can be used to spawn items or enemies when something specific happens.
@@ -135,12 +135,16 @@ If it's working you can try to add enemies guarding the vehicle to the mission. 
     </details>
 </details>
 
+<br/>
+<br/>
+Did you work it out? Good job!
+
 Now try adding some other creative ideas to your scenario. For instance:
 - Spawn enemies reacting to the object being destroyed
 - Using the Children `RANDOM ONE` property to create multiple different possible extraction points
 - try to figure out some other tasks not in this guide
 
-If you have any further questions about making missions you can visit the Arma discord and specifically [Enfusion Mission Makers](https://discord.com/channels/105462288051380224/976159829628444682)
+**Hint** You can open the Combat Ops - Arland scenario by opening the world editor and opening `ArmaReforger/worlds/MP/Coop_CombatOps_Arland.ent`. There is a lot to be learned from studying the way BI does things in that scenario. If you have any further questions about making missions you can visit the Arma discord and specifically [Enfusion Mission Makers](https://discord.com/channels/105462288051380224/976159829628444682)
 
 Hopefully this has been a helpful guide and you'll be able to create some cool scenarios!
 
