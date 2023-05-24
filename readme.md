@@ -100,6 +100,7 @@ Drag a `SlotTrigger` prefab into the world and make sure it is a child of `MoveL
 
 Now for the important part. In the Object Properties window, there is a property `OnTaskFinished`. Add an action and select `Spawn Objects`. Open the action and add an object to spawn. In the text box, enter the name `DestroyLayer`. This will refer to the layer we will be creating in the next step. Setting this property will make sure the selected layer is spawned when this task is finished.
 
+![OnActivationSpawnObject](/Images/OnActivationSpawnObject)
 
 ### Second task: Destroy
 Drag a `LayerTaskDestroy` prefab into the world and name it `DestroyLayer`. Make sure it is a child of `Mission`. In the object properties set the activation type to `ON_TRIGGER_ACTIVATION`. This will make sure the task will only be activated once another trigger has happened. We have already set up the move task to trigger the activation of this layer.
@@ -116,6 +117,8 @@ Drag a regular slot prefab into the world close to the SlotDestroy entity and ma
 Drag a `LayerTaskMove` prefab into the world, name it `Extractionlayer`. Make sure it is a child of `Mission`. In the object properties set the activation type to `ON_TRIGGER_ACTIVATION`. 
 
 Now finally, drag a `SlotMoveTo` into the world and make sure it is a child of `ExtractionLayer`. On this slot, we will also add an `OnTaskFinished` action. But this time we will select `End Mission`. We can select type of end screen we see by enabling `Override Game Over Type` and selecting a game over type from the list. This will change the text on the screen when the mission ends. You can select `COMBATPATROL_VICTORY` for now. We will also enable `Show Debug Shapes During Runtime` to make testing easier.
+
+![OnActivationEndMission](/Images/OnActivationEndMission.PNG)
 
 ### Testing the scenario
 When you spawn you should see the move objective in your journal. When you move to the location the task should be completed and the destroy task (along with the vehicle and ammobox) should be spawned. When the vehicle is destroyed, the extraction task should spawn. And when you enter the extraction location, the mission should end.
@@ -135,3 +138,6 @@ If it's working you can try to add enemies guarding the vehicle to the mission. 
     This is not much different then the ammobox we spawned near the car. First drag a SlotAI.et into the world near the destroy slot. Set an enemy group as the object to spawn, for instance Group_USSR_SentryTeam.et. If you drag the slot into the DestroyLayer in the hierarchy window, it will be activated along with the vehicle and the ammobox. That's it! Isn't it easy? :)
     </details>
 </details>
+
+
+Hopefully this has been a helpful guide and you'll be able to create some cool scenarios!
